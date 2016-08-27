@@ -75,9 +75,9 @@ table.responsive td .label {
   display: none;
 }
 
-/* Media Query */
+/* Apply the contained CSS only to narrow viewports via a Media Query */
 @media screen and (max-width:640px) {
-  /* Hide the table header if a narrow viewport */
+  /* Hide the table header */
   table.responsive thead {
       display: none;
   }
@@ -94,7 +94,7 @@ table.responsive td .label {
   }
   
   /* Make all cell labels look like column headers  */
-  table.responsive.first td .label {
+  table.responsive td .label {
       background-color: #ddd;
       font-weight: bold;
       text-align: center;
@@ -102,5 +102,7 @@ table.responsive td .label {
 }
 ```
 <a href="https://yesnoio.github.io/responsive-table/success.html">See the Result</a>
+
+The tables will look great in both portrait & landscape viewports. Huzzah.
 
 *fin*
