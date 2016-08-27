@@ -39,7 +39,7 @@ labels to each cell -- and hide them all by default.
 
 ```html
 <style>
-  table.responsive tbody .label {
+  table.responsive td .label {
     display: none;
   }
 </style>
