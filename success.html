@@ -1,0 +1,117 @@
+<html>
+<head>
+    <title>Responsive Table</title>
+    <style>
+        table.responsive {
+            width: 100%;
+        }
+        table.responsive td .label {
+            display: none;
+        }
+
+        table.responsive th {
+            background-color: #ddd;
+        }
+
+        table.second {
+            margin-top: 5em;
+        }
+
+        @media screen and (max-width:640px) {
+            table.responsive thead {
+                display: none;
+            }
+            table.responsive tbody th,
+            table.responsive tbody td {
+                display: block;
+            }
+
+            table.responsive.first td span {
+                display: block;
+            }
+            table.responsive.first td .label {
+                background-color: #ddd;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            table.responsive.second th {
+                margin-top: 0.5em;
+            }
+
+            table.responsive.second td {
+                border-bottom: 1px #ccc solid;
+            }
+
+            table.responsive.second td .label {
+                display: inline-block;
+            }
+            table.responsive.second td .data {
+                float: right;
+                font-weight: bold;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<table class="responsive first">
+    <thead>
+        <tr>
+            <th>Column Foo</th>
+            <th>Column Bar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><span class="label">Column Foo</span><span class="data">Baz</span></td>
+            <td><span class="label">Column Bar</span><span class="data">Qux</span></td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="responsive second">
+    <thead>
+    <tr>
+        <th></th>
+        <th>TARDIS</th>
+        <th>Enterprise</th>
+        <th>Falcon</th>
+        <th>Serenity</th>
+        <th>Pearl</th>
+        <th>RLS Legacy</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>First Known</th>
+            <td><span class="label">Tardis</span><span class="data">Who</span></td>
+            <td><span class="label">Enterprise</span><span class="data">April</span></td>
+            <td><span class="label">Falcon</span><span class="data">Solo</span></td>
+            <td><span class="label">Serenity</span><span class="data">Reynolds</span></td>
+            <td><span class="label">Pearl</span><span class="data">Sparrow</span></td>
+            <td><span class="label">RLS Legacy</span><span class="data">Amelia</span></td>
+        </tr>
+        <tr>
+            <th>Second</th>
+            <td><span class="label">Tardis</span><span class="data"></span></td>
+            <td><span class="label">Enterprise</span><span class="data">Pike</span></td>
+            <td><span class="label">Falcon</span><span class="data">Rey of Jakku</span></td>
+            <td><span class="label">Serenity</span><span class="data"></span></td>
+            <td><span class="label">Pearl</span><span class="data">Barbossa</span></td>
+            <td><span class="label">RLS Legacy</span><span class="data"></span></td>
+        </tr>
+        <tr>
+            <th>Third</th>
+            <td><span class="label">Tardis</span><span class="data"></span></td>
+            <td><span class="label">Enterprise</span><span class="data">Kirk</span></td>
+            <td><span class="label">Falcon</span><span class="data"></span></td>
+            <td><span class="label">Serenity</span><span class="data"></span></td>
+            <td><span class="label">Pearl</span><span class="data">Sparrow</span></td>
+            <td><span class="label">RLS Legacy</span><span class="data"></span></td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
