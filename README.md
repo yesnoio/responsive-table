@@ -6,12 +6,12 @@ We can.
 
 ### A Standard Table
 The challenge with a responsive table is that table column headers must always be near the relevant
-column data. With CSS, we can have all `tr` & `td` elements stack via CSS `display: block;`. The columns would
+column data. With CSS, we can have all `th` & `td` elements stack via CSS `display: block;`. The columns would
 be at the top of the stack & all values below them. This is not ideal.
 
 ```html
 <style>
-  table tr,
+  table th,
   table td {
     display: block;
   }
