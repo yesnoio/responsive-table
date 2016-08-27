@@ -31,7 +31,7 @@ be at the top of the stack & all values below them. This is not ideal.
     </tbody>
 </table>
 ```
-<a href="#">See the Result</a>
+<a href="https://yesnoio.github.io/responsive-table/fail.html">See the Result</a>
 
 ### A Responsive Table
 In order to have a responsive table, column labels need to be near column cell data. We need to add these
@@ -39,7 +39,7 @@ labels to each cell -- and hide them all by default.
 
 ```html
 <style>
-  table.responsive tbody .label {
+  table.responsive td .label {
     display: none;
   }
 </style>
@@ -58,7 +58,7 @@ labels to each cell -- and hide them all by default.
     </tbody>
 </table>
 ```
-<a href="#">See the Result</a>
+<a href="https://yesnoio.github.io/responsive-table/cell-labels-added.html">See the Result</a>
 
 With that done, we are able to use just CSS to show/hide & arrange the display as needed:
 ```css
@@ -101,6 +101,6 @@ table.responsive td .label {
   }
 }
 ```
-<a href="#">See the Result</a>
+<a href="https://yesnoio.github.io/responsive-table/success.html">See the Result</a>
 
 *fin*
