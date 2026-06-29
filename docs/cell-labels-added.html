@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Table – Step 2: Add Cell Labels</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    table.responsive td .label { display: none; }
+    table.responsive { width: 100%; border-collapse: collapse; }
+    table.responsive th,
+    table.responsive td { padding: 0.6rem 0.875rem; border-bottom: 1px solid #e2e8f0; font-size: 0.9rem; text-align: left; }
+    table.responsive th { background: #f1f5f9; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="index.html">Responsive Table</a>
+  <nav>
+    <a href="fail.html">1. Fail</a>
+    <a href="cell-labels-added.html" class="active">2. Add Labels</a>
+    <a href="success.html">3. Success</a>
+    <a href="index.html">Home</a>
+  </nav>
+</header>
+
+<div class="page-content">
+
+  <h1>Step 2 — Add Labels to Each Cell</h1>
+
+  <div class="callout info">
+    The table looks <strong>identical to a normal table</strong> at this stage — the labels are in the DOM but hidden. The next step reveals them on narrow screens.
+  </div>
+
+  <p>Embed the column header text inside each <code>&lt;td&gt;</code> as a hidden <code>.label</code> span, and wrap the actual value in a <code>.data</code> span alongside it:</p>
+
+  <pre><code>&lt;style&gt;
+  table.responsive td .label { display: none; }
+&lt;/style&gt;
+
+&lt;table class="responsive"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Column Foo&lt;/th&gt;
+      &lt;th&gt;Column Bar&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;span class="label"&gt;Column Foo&lt;/span&gt;
+        &lt;span class="data"&gt;Baz&lt;/span&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        &lt;span class="label"&gt;Column Bar&lt;/span&gt;
+        &lt;span class="data"&gt;Qux&lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+
+  <p>The table below has labels added. At any wide width it looks like a normal table — the labels are invisible but present in the markup:</p>
+
+  <table class="responsive">
+    <thead>
+      <tr>
+        <th>Column Foo</th>
+        <th>Column Bar</th>
+        <th>Column Baz</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="label">Column Foo</span><span class="data">Alpha</span></td>
+        <td><span class="label">Column Bar</span><span class="data">Beta</span></td>
+        <td><span class="label">Column Baz</span><span class="data">Gamma</span></td>
+      </tr>
+      <tr>
+        <td><span class="label">Column Foo</span><span class="data">Delta</span></td>
+        <td><span class="label">Column Bar</span><span class="data">Epsilon</span></td>
+        <td><span class="label">Column Baz</span><span class="data">Zeta</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top:1.5rem;">Now that every cell carries its own label, a media query can reveal them and stack the layout without losing column context.</p>
+
+  <a href="success.html" class="btn btn-primary">Next: Add the CSS →</a>
+
+</div>
+
+<footer class="site-footer">
+  MIT License &middot;
+  <a href="https://github.com/yesnoio/responsive-table">github.com/yesnoio/responsive-table</a>
+</footer>
+
+</body>
+</html>

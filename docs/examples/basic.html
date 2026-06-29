@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Table – Basic Example</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 1.5rem; color: #334155; line-height: 1.5; }
+    h1   { font-size: 1.25rem; margin-bottom: 1rem; color: #0f172a; }
+
+    table.responsive {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table.responsive th,
+    table.responsive td {
+      padding: 0.6rem 0.875rem;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 0.9rem;
+    }
+    table.responsive th {
+      background: #f1f5f9;
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    /* Hide labels at full width */
+    table.responsive td .label { display: none; }
+
+    @media screen and (max-width: 640px) {
+      table.responsive thead { display: none; }
+      table.responsive tbody tr {
+        display: block;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        overflow: hidden;
+        margin-bottom: 1rem;
+      }
+      table.responsive tbody tr:last-child { margin-bottom: 0; }
+      table.responsive tbody td { display: block; padding: 0; }
+      table.responsive tbody tr td:last-child { border-bottom: none; }
+      table.responsive td span { display: block; }
+      table.responsive td .label {
+        display: block;
+        padding: 0.25rem 0.875rem;
+        background: #f1f5f9;
+        font-weight: 600;
+        text-align: center;
+        color: #0f172a;
+      }
+      table.responsive td .data { padding: 0.6rem 0.875rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Product Inventory</h1>
+
+  <table class="responsive">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>SKU</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>In Stock</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="label">Product</span><span class="data">Wireless Headphones</span></td>
+        <td><span class="label">SKU</span><span class="data">WH-1042</span></td>
+        <td><span class="label">Category</span><span class="data">Audio</span></td>
+        <td><span class="label">Price</span><span class="data">$79.99</span></td>
+        <td><span class="label">In Stock</span><span class="data">142</span></td>
+      </tr>
+      <tr>
+        <td><span class="label">Product</span><span class="data">USB-C Hub (7-port)</span></td>
+        <td><span class="label">SKU</span><span class="data">HB-0071</span></td>
+        <td><span class="label">Category</span><span class="data">Accessories</span></td>
+        <td><span class="label">Price</span><span class="data">$34.99</span></td>
+        <td><span class="label">In Stock</span><span class="data">58</span></td>
+      </tr>
+      <tr>
+        <td><span class="label">Product</span><span class="data">Mechanical Keyboard</span></td>
+        <td><span class="label">SKU</span><span class="data">KB-MX87</span></td>
+        <td><span class="label">Category</span><span class="data">Input</span></td>
+        <td><span class="label">Price</span><span class="data">$129.00</span></td>
+        <td><span class="label">In Stock</span><span class="data">23</span></td>
+      </tr>
+      <tr>
+        <td><span class="label">Product</span><span class="data">Webcam 1080p</span></td>
+        <td><span class="label">SKU</span><span class="data">CAM-HD10</span></td>
+        <td><span class="label">Category</span><span class="data">Video</span></td>
+        <td><span class="label">Price</span><span class="data">$59.99</span></td>
+        <td><span class="label">In Stock</span><span class="data">0</span></td>
+      </tr>
+      <tr>
+        <td><span class="label">Product</span><span class="data">Desk Mat XL</span></td>
+        <td><span class="label">SKU</span><span class="data">DM-XL90</span></td>
+        <td><span class="label">Category</span><span class="data">Accessories</span></td>
+        <td><span class="label">Price</span><span class="data">$24.99</span></td>
+        <td><span class="label">In Stock</span><span class="data">311</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

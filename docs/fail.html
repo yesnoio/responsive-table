@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Table – Step 1: The Naive Approach</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Deliberately broken — all th/td become block elements */
+    table th,
+    table td {
+      display: block;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    table th, table td { padding: 0.5rem 0.875rem; border-bottom: 1px solid #e2e8f0; font-size: 0.9rem; }
+    table th { background: #f1f5f9; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="index.html">Responsive Table</a>
+  <nav>
+    <a href="fail.html" class="active">1. Fail</a>
+    <a href="cell-labels-added.html">2. Add Labels</a>
+    <a href="success.html">3. Success</a>
+    <a href="index.html">Home</a>
+  </nav>
+</header>
+
+<div class="page-content">
+
+  <h1>Step 1 — The Naive Approach</h1>
+
+  <div class="callout warn">
+    This approach <strong>doesn't work.</strong> All column headers stack at the top, completely disconnected from the data in each row.
+  </div>
+
+  <p>A common first attempt at making a table responsive is applying <code>display: block</code> to <code>&lt;th&gt;</code> and <code>&lt;td&gt;</code> so they stack vertically on narrow screens:</p>
+
+  <pre><code>table th,
+table td {
+  display: block;
+}</code></pre>
+
+  <p>Because the <code>&lt;thead&gt;</code> row renders first, all of its <code>&lt;th&gt;</code> cells pile up at the top — leaving data rows with no column context. Narrow this window to see the problem:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Column Foo</th>
+        <th>Column Bar</th>
+        <th>Column Baz</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Alpha</td>
+        <td>Beta</td>
+        <td>Gamma</td>
+      </tr>
+      <tr>
+        <td>Delta</td>
+        <td>Epsilon</td>
+        <td>Zeta</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top:1.5rem;">The headers and data are disconnected — a reader has no way to know which value belongs to which column.</p>
+
+  <a href="cell-labels-added.html" class="btn btn-primary">Next: Add Labels →</a>
+
+</div>
+
+<footer class="site-footer">
+  MIT License &middot;
+  <a href="https://github.com/yesnoio/responsive-table">github.com/yesnoio/responsive-table</a>
+</footer>
+
+</body>
+</html>

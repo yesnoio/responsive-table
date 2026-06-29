@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Table – Styled Example</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 1.5rem; color: #334155; line-height: 1.5; }
+    h1   { font-size: 1.25rem; margin-bottom: 1rem; color: #0f172a; }
+
+    table.responsive {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    table.responsive th,
+    table.responsive td {
+      padding: 0.7rem 1rem;
+      text-align: left;
+      font-size: 0.9rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    table.responsive th {
+      background: #1e293b;
+      color: #f1f5f9;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+    table.responsive tbody tr:last-child td { border-bottom: none; }
+    table.responsive tbody tr:nth-child(even) td { background: #f8fafc; }
+    table.responsive tbody tr:hover td { background: #eff6ff; }
+
+    /* Status badges */
+    .badge {
+      display: inline-block;
+      padding: 0.15em 0.6em;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+    .badge-green { background: #dcfce7; color: #15803d; }
+    .badge-red   { background: #fee2e2; color: #b91c1c; }
+    .badge-gray  { background: #f1f5f9; color: #475569; }
+
+    /* Hide labels at full width */
+    table.responsive td .label { display: none; }
+
+    /* ── Inline-label mobile style ── */
+    @media screen and (max-width: 640px) {
+      table.responsive { border-radius: 0; border-left: none; border-right: none; }
+      table.responsive thead { display: none; }
+      table.responsive tbody tr:nth-child(even) td { background: transparent; }
+      table.responsive tbody td {
+        display: block;
+        border-bottom: 1px solid #f1f5f9;
+        padding: 0.4rem 1rem;
+        overflow: hidden;
+      }
+      /* Group cells visually by row */
+      table.responsive tbody tr td:first-child {
+        padding-top: 0.75rem;
+        font-weight: 600;
+        font-size: 1rem;
+        border-bottom: none;
+      }
+      table.responsive tbody tr td:last-child {
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid #e2e8f0;
+      }
+
+      table.responsive td .label {
+        display: inline-block;
+        color: #94a3b8;
+        font-size: 0.8rem;
+        min-width: 7em;
+      }
+      table.responsive td .data {
+        font-weight: 500;
+        float: right;
+      }
+      /* First cell (product name) — hide the label, show just the name big */
+      table.responsive tbody tr td:first-child .label { display: none; }
+      table.responsive tbody tr td:first-child .data  { float: none; font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Product Inventory</h1>
+
+  <table class="responsive">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>SKU</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Stock</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="label">Product</span><span class="data">Wireless Headphones</span></td>
+        <td><span class="label">SKU</span><span class="data">WH-1042</span></td>
+        <td><span class="label">Category</span><span class="data">Audio</span></td>
+        <td><span class="label">Price</span><span class="data">$79.99</span></td>
+        <td><span class="label">Stock</span><span class="data"><span class="badge badge-green">142 units</span></span></td>
+      </tr>
+      <tr>
+        <td><span class="label">Product</span><span class="data">USB-C Hub (7-port)</span></td>
+        <td><span class="label">SKU</span><span class="data">HB-0071</span></td>
+        <td><span class="label">Category</span><span class="data">Accessories</span></td>
+        <td><span class="label">Price</span><span class="data">$34.99</span></td>
+        <td><span class="label">Stock</span><span class="data"><span class="badge badge-green">58 units</span></span></td>
+      </tr>
+      <tr>
+        <td><span class="label">Product</span><span class="data">Mechanical Keyboard</span></td>
+        <td><span class="label">SKU</span><span class="data">KB-MX87</span></td>
+        <td><span class="label">Category</span><span class="data">Input</span></td>
+        <td><span class="label">Price</span><span class="data">$129.00</span></td>
+        <td><span class="label">Stock</span><span class="data"><span class="badge badge-gray">23 units</span></span></td>
+      </tr>
+      <tr>
+        <td><span class="label">Product</span><span class="data">Webcam 1080p</span></td>
+        <td><span class="label">SKU</span><span class="data">CAM-HD10</span></td>
+        <td><span class="label">Category</span><span class="data">Video</span></td>
+        <td><span class="label">Price</span><span class="data">$59.99</span></td>
+        <td><span class="label">Stock</span><span class="data"><span class="badge badge-red">Out of stock</span></span></td>
+      </tr>
+      <tr>
+        <td><span class="label">Product</span><span class="data">Desk Mat XL</span></td>
+        <td><span class="label">SKU</span><span class="data">DM-XL90</span></td>
+        <td><span class="label">Category</span><span class="data">Accessories</span></td>
+        <td><span class="label">Price</span><span class="data">$24.99</span></td>
+        <td><span class="label">Stock</span><span class="data"><span class="badge badge-green">311 units</span></span></td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

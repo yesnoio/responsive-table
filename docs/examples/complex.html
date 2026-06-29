@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Table – Complex Example</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 1.5rem; color: #334155; line-height: 1.5; }
+    h1   { font-size: 1.5rem; margin-bottom: 0.5rem; color: #0f172a; }
+    h2   { font-size: 1.1rem; margin: 2rem 0 0.5rem; color: #0f172a; }
+    p    { font-size: 0.9rem; color: #64748b; margin-bottom: 0.75rem; }
+
+    /* ── Shared table chrome ── */
+    table.responsive {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 0.5rem;
+    }
+    table.responsive th,
+    table.responsive td {
+      padding: 0.6rem 0.875rem;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 0.9rem;
+    }
+
+    /* ═══════════════════════════════════════════════
+       TABLE 1 — Stacked label style
+       Label renders as a full-width header bar above the value.
+    ═══════════════════════════════════════════════ */
+    table.stacked th {
+      background: #f1f5f9;
+      font-weight: 600;
+      color: #0f172a;
+    }
+    table.stacked td .label { display: none; }
+
+    @media screen and (max-width: 640px) {
+      table.stacked thead { display: none; }
+      table.stacked tbody tr {
+        display: block;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        overflow: hidden;
+        margin-bottom: 1rem;
+      }
+      table.stacked tbody tr:last-child { margin-bottom: 0; }
+      table.stacked tbody td { display: block; padding: 0; }
+      table.stacked tbody tr td:last-child { border-bottom: none; }
+      table.stacked td span { display: block; }
+      table.stacked td .label {
+        display: block;
+        padding: 0.25rem 0.875rem;
+        background: #f1f5f9;
+        font-weight: 600;
+        text-align: center;
+        color: #0f172a;
+      }
+      table.stacked td .data { padding: 0.6rem 0.875rem; }
+    }
+
+    /* ═══════════════════════════════════════════════
+       TABLE 2 — Inline label style
+       Label sits left, value floats right.
+       Works well for comparison or spec tables.
+    ═══════════════════════════════════════════════ */
+    table.inline th {
+      background: #1e293b;
+      color: #f1f5f9;
+      font-weight: 600;
+    }
+    table.inline tbody th {
+      background: #f8fafc;
+      font-weight: 600;
+      color: #0f172a;
+    }
+    table.inline td .label { display: none; }
+
+    @media screen and (max-width: 640px) {
+      table.inline thead        { display: none; }
+      table.inline tbody th,
+      table.inline tbody td     { display: block; }
+      table.inline tbody th {
+        margin-top: 0.75rem;
+        font-size: 1rem;
+        border-bottom: 2px solid #e2e8f0;
+      }
+      table.inline tbody td {
+        border-bottom: 1px solid #f1f5f9;
+        overflow: hidden;
+      }
+      table.inline td .label {
+        display: inline-block;
+        color: #94a3b8;
+        font-size: 0.85rem;
+      }
+      table.inline td .data {
+        float: right;
+        font-weight: 600;
+      }
+    }
+
+    /* ═══════════════════════════════════════════════
+       TABLE 3 — Row-group style
+       Each row becomes a card with a bold title row.
+    ═══════════════════════════════════════════════ */
+    table.card-rows th {
+      background: #0f172a;
+      color: #f1f5f9;
+      font-weight: 600;
+    }
+    table.card-rows tbody tr:nth-child(even) td { background: #f8fafc; }
+    table.card-rows td .label { display: none; }
+
+    @media screen and (max-width: 640px) {
+      table.card-rows { border: none; }
+      table.card-rows thead { display: none; }
+      table.card-rows tbody td {
+        display: block;
+        border-bottom: 1px dotted #e2e8f0;
+        padding: 0.35rem 0.875rem;
+        overflow: hidden;
+      }
+      table.card-rows tbody tr td:first-child {
+        background: #f1f5f9;
+        font-weight: 700;
+        font-size: 1rem;
+        border-bottom: 2px solid #cbd5e1;
+        padding: 0.6rem 0.875rem;
+      }
+      table.card-rows tbody tr td:first-child .label { display: none; }
+      table.card-rows tbody tr td:first-child .data  { font-weight: 700; }
+      table.card-rows tbody tr:nth-child(even) td { background: transparent; }
+      table.card-rows tbody tr td:last-child {
+        border-bottom: none;
+        margin-bottom: 1rem;
+      }
+      table.card-rows td .label {
+        display: inline-block;
+        color: #64748b;
+        font-size: 0.8rem;
+        width: 7em;
+      }
+      table.card-rows td .data {
+        display: inline;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Responsive Tables – Complex Example</h1>
+  <p>Three tables, three different mobile layouts — all using the same HTML pattern with only CSS changed inside the media query.</p>
+
+  <!-- Table 1: Stacked ───────────────────────────── -->
+  <h2>Style 1 — Stacked label</h2>
+  <p>Label renders as a full-width header bar above each value.</p>
+  <table class="responsive stacked">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Department</th>
+        <th>Location</th>
+        <th>Started</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="label">Name</span><span class="data">Alice Chen</span></td>
+        <td><span class="label">Role</span><span class="data">Senior Engineer</span></td>
+        <td><span class="label">Department</span><span class="data">Product</span></td>
+        <td><span class="label">Location</span><span class="data">Remote</span></td>
+        <td><span class="label">Started</span><span class="data">2021</span></td>
+      </tr>
+      <tr>
+        <td><span class="label">Name</span><span class="data">Bob Davis</span></td>
+        <td><span class="label">Role</span><span class="data">UX Designer</span></td>
+        <td><span class="label">Department</span><span class="data">Design</span></td>
+        <td><span class="label">Location</span><span class="data">New York</span></td>
+        <td><span class="label">Started</span><span class="data">2019</span></td>
+      </tr>
+      <tr>
+        <td><span class="label">Name</span><span class="data">Carol Smith</span></td>
+        <td><span class="label">Role</span><span class="data">Product Manager</span></td>
+        <td><span class="label">Department</span><span class="data">Product</span></td>
+        <td><span class="label">Location</span><span class="data">San Francisco</span></td>
+        <td><span class="label">Started</span><span class="data">2020</span></td>
+      </tr>
+      <tr>
+        <td><span class="label">Name</span><span class="data">Dan Lee</span></td>
+        <td><span class="label">Role</span><span class="data">Data Analyst</span></td>
+        <td><span class="label">Department</span><span class="data">Analytics</span></td>
+        <td><span class="label">Location</span><span class="data">Chicago</span></td>
+        <td><span class="label">Started</span><span class="data">2022</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Table 2: Inline ───────────────────────────── -->
+  <h2>Style 2 — Inline label</h2>
+  <p>Label left, value right. Great for comparison and spec data.</p>
+  <table class="responsive inline">
+    <thead>
+      <tr>
+        <th></th>
+        <th>TARDIS</th>
+        <th>Enterprise</th>
+        <th>Falcon</th>
+        <th>Serenity</th>
+        <th>Black Pearl</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>1st Captain</th>
+        <td><span class="label">TARDIS</span><span class="data">The Doctor</span></td>
+        <td><span class="label">Enterprise</span><span class="data">April</span></td>
+        <td><span class="label">Falcon</span><span class="data">Calrissian</span></td>
+        <td><span class="label">Serenity</span><span class="data">Reynolds</span></td>
+        <td><span class="label">Black Pearl</span><span class="data">Sparrow</span></td>
+      </tr>
+      <tr>
+        <th>2nd Captain</th>
+        <td><span class="label">TARDIS</span><span class="data">—</span></td>
+        <td><span class="label">Enterprise</span><span class="data">Pike</span></td>
+        <td><span class="label">Falcon</span><span class="data">Solo</span></td>
+        <td><span class="label">Serenity</span><span class="data">—</span></td>
+        <td><span class="label">Black Pearl</span><span class="data">Barbossa</span></td>
+      </tr>
+      <tr>
+        <th>3rd Captain</th>
+        <td><span class="label">TARDIS</span><span class="data">—</span></td>
+        <td><span class="label">Enterprise</span><span class="data">Kirk</span></td>
+        <td><span class="label">Falcon</span><span class="data">Rey</span></td>
+        <td><span class="label">Serenity</span><span class="data">—</span></td>
+        <td><span class="label">Black Pearl</span><span class="data">Sparrow</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Table 3: Card rows ─────────────────────────── -->
+  <h2>Style 3 — Card rows</h2>
+  <p>Each row becomes a compact card with the first column as the card title.</p>
+  <table class="responsive card-rows">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>SKU</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Stock</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="label">Product</span><span class="data">Wireless Headphones</span></td>
+        <td><span class="label">SKU</span><span class="data">WH-1042</span></td>
+        <td><span class="label">Category</span><span class="data">Audio</span></td>
+        <td><span class="label">Price</span><span class="data">$79.99</span></td>
+        <td><span class="label">Stock</span><span class="data">142</span></td>
+      </tr>
+      <tr>
+        <td><span class="label">Product</span><span class="data">USB-C Hub (7-port)</span></td>
+        <td><span class="label">SKU</span><span class="data">HB-0071</span></td>
+        <td><span class="label">Category</span><span class="data">Accessories</span></td>
+        <td><span class="label">Price</span><span class="data">$34.99</span></td>
+        <td><span class="label">Stock</span><span class="data">58</span></td>
+      </tr>
+      <tr>
+        <td><span class="label">Product</span><span class="data">Mechanical Keyboard</span></td>
+        <td><span class="label">SKU</span><span class="data">KB-MX87</span></td>
+        <td><span class="label">Category</span><span class="data">Input</span></td>
+        <td><span class="label">Price</span><span class="data">$129.00</span></td>
+        <td><span class="label">Stock</span><span class="data">23</span></td>
+      </tr>
+      <tr>
+        <td><span class="label">Product</span><span class="data">Webcam 1080p</span></td>
+        <td><span class="label">SKU</span><span class="data">CAM-HD10</span></td>
+        <td><span class="label">Category</span><span class="data">Video</span></td>
+        <td><span class="label">Price</span><span class="data">$59.99</span></td>
+        <td><span class="label">Stock</span><span class="data">0</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #334155;
+  line-height: 1.6;
+  background: #fff;
+}
+
+a { color: #2563eb; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Site header ─────────────────────────────────────────────────────── */
+.site-header {
+  background: #0f172a;
+  color: #f1f5f9;
+  padding: 0.75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.site-header .brand {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #f1f5f9;
+  text-decoration: none;
+}
+
+.site-header .brand:hover { text-decoration: none; color: #fff; }
+
+.site-header nav {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  font-size: 0.875rem;
+  flex-wrap: wrap;
+}
+
+.site-header nav a { color: #94a3b8; }
+.site-header nav a:hover,
+.site-header nav a.active { color: #f1f5f9; text-decoration: none; }
+
+/* ── Page layout ─────────────────────────────────────────────────────── */
+.page-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+}
+
+section { margin-bottom: 3rem; }
+
+h1 { font-size: 1.75rem; color: #0f172a; margin-bottom: 0.5rem; }
+h2 { font-size: 1.3rem; color: #0f172a; margin-bottom: 0.75rem; }
+h3 { font-size: 1rem; color: #1e293b; margin-bottom: 0.5rem; }
+p  { margin-bottom: 0.75rem; color: #475569; }
+
+/* ── Code ────────────────────────────────────────────────────────────── */
+pre {
+  background: #1e293b;
+  color: #e2e8f0;
+  padding: 1.25rem 1.5rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+code { font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, monospace; }
+
+/* ── Callouts ────────────────────────────────────────────────────────── */
+.callout {
+  padding: 0.75rem 1rem;
+  border-left: 3px solid;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+}
+.callout.info    { background: #eff6ff; border-color: #2563eb; color: #1e40af; }
+.callout.warn    { background: #fefce8; border-color: #ca8a04; color: #78350f; }
+.callout.success { background: #f0fdf4; border-color: #16a34a; color: #14532d; }
+
+/* ── Buttons ─────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-block;
+  padding: 0.45rem 1.1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+  text-decoration: none !important;
+}
+.btn-primary { background: #2563eb; color: #fff !important; }
+.btn-primary:hover { background: #1d4ed8; }
+.btn-outline { background: transparent; color: #2563eb !important; border: 1.5px solid #2563eb; }
+.btn-outline:hover { background: #eff6ff; }
+.btn-lg { padding: 0.6rem 1.5rem; font-size: 1rem; }
+
+/* ── Site footer ─────────────────────────────────────────────────────── */
+.site-footer {
+  border-top: 1px solid #e2e8f0;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin-top: 2rem;
+}
+.site-footer a { color: #64748b; }
+
+/* ── Responsive table — core styles used on all demo pages ───────────── */
+table.responsive {
+  width: 100%;
+  border-collapse: collapse;
+}
+table.responsive th,
+table.responsive td {
+  padding: 0.6rem 0.875rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.9rem;
+}
+table.responsive th {
+  background: #f1f5f9;
+  font-weight: 600;
+  color: #0f172a;
+  white-space: nowrap;
+}
+table.responsive tbody tr:hover td { background: #fafafa; }
+
+table.responsive td .label { display: none; }
+
+@media screen and (max-width: 640px) {
+  table.responsive thead { display: none; }
+
+  table.responsive tbody th,
+  table.responsive tbody td { display: block; }
+
+  table.responsive td span { display: block; }
+
+  table.responsive td .label {
+    background: #f1f5f9;
+    font-weight: 600;
+    text-align: center;
+    color: #0f172a;
+  }
+}

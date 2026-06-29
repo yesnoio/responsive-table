@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Table – Blank Starter</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 1.5rem; color: #334155; }
+
+    /* ── Required: hide labels at wide widths ── */
+    table.responsive td .label {
+      display: none;
+    }
+
+    /* ── Basic table chrome (optional, customize freely) ── */
+    table.responsive {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table.responsive th,
+    table.responsive td {
+      padding: 0.6rem 0.875rem;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    table.responsive th {
+      background: #f1f5f9;
+      font-weight: 600;
+    }
+
+    /* ── Media query: mobile layout ── */
+    @media screen and (max-width: 640px) {
+      /* Hide the header row */
+      table.responsive thead {
+        display: none;
+      }
+
+      /* Turn each row into a card */
+      table.responsive tbody tr {
+        display: block;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        overflow: hidden;
+        margin-bottom: 1rem;
+      }
+      table.responsive tbody tr:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Stack each cell as its own block; zero padding so label sits flush */
+      table.responsive tbody td {
+        display: block;
+        padding: 0;
+      }
+      table.responsive tbody tr td:last-child {
+        border-bottom: none;
+      }
+
+      /* Stack the spans inside each cell */
+      table.responsive td span {
+        display: block;
+      }
+
+      /* Style the label like a mini column header; owns its own padding */
+      table.responsive td .label {
+        display: block;
+        padding: 0.25rem 0.875rem;
+        background: #f1f5f9;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      table.responsive td .data {
+        padding: 0.6rem 0.875rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!--
+    RESPONSIVE TABLE – BLANK STARTER
+    =================================
+    Pattern:
+      • Add class="responsive" to <table>
+      • Inside every <td>, wrap content in two spans:
+          <span class="label">Column Header Text</span>
+          <span class="data">Actual Value</span>
+      • The .label text should match the corresponding <th>
+  -->
+
+  <table class="responsive">
+    <thead>
+      <tr>
+        <!-- Replace with your column headers -->
+        <th>Column A</th>
+        <th>Column B</th>
+        <th>Column C</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Repeat this <tr> pattern for each row of data -->
+      <tr>
+        <td><span class="label">Column A</span><span class="data">Value</span></td>
+        <td><span class="label">Column B</span><span class="data">Value</span></td>
+        <td><span class="label">Column C</span><span class="data">Value</span></td>
+      </tr>
+      <tr>
+        <td><span class="label">Column A</span><span class="data">Value</span></td>
+        <td><span class="label">Column B</span><span class="data">Value</span></td>
+        <td><span class="label">Column C</span><span class="data">Value</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

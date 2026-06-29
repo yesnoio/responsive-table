@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Table – Step 3: Success</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── Style A: stacked label (label above data) ── */
+    table.responsive.style-a td .label { display: none; }
+
+    @media screen and (max-width: 640px) {
+      table.responsive.style-a thead { display: none; }
+      table.responsive.style-a tbody tr {
+        display: block;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        overflow: hidden;
+        margin-bottom: 1rem;
+      }
+      table.responsive.style-a tbody tr:last-child { margin-bottom: 0; }
+      table.responsive.style-a tbody td { display: block; padding: 0; }
+      table.responsive.style-a tbody tr td:last-child { border-bottom: none; }
+      table.responsive.style-a td span { display: block; }
+      table.responsive.style-a td .label {
+        display: block;
+        padding: 0.25rem 0.875rem;
+        background: #f1f5f9;
+        font-weight: 600;
+        text-align: center;
+        color: #0f172a;
+      }
+      table.responsive.style-a td .data { padding: 0.6rem 0.875rem; }
+    }
+
+    /* ── Style B: inline label (label left, data right) ── */
+    table.responsive.style-b td .label { display: none; }
+
+    @media screen and (max-width: 640px) {
+      table.responsive.style-b thead { display: none; }
+      table.responsive.style-b tbody th,
+      table.responsive.style-b tbody td { display: block; }
+      table.responsive.style-b tbody th { margin-top: 0.75rem; font-size: 1rem; }
+      table.responsive.style-b td {
+        border-bottom: 1px solid #e2e8f0;
+        overflow: hidden;
+      }
+      table.responsive.style-b td .label {
+        display: inline-block;
+        color: #64748b;
+      }
+      table.responsive.style-b td .data {
+        float: right;
+        font-weight: 600;
+      }
+    }
+
+    .table-section { margin-bottom: 2.5rem; }
+    .table-section h3 { margin-bottom: 0.5rem; }
+    .table-section p  { margin-bottom: 0.75rem; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="index.html">Responsive Table</a>
+  <nav>
+    <a href="fail.html">1. Fail</a>
+    <a href="cell-labels-added.html">2. Add Labels</a>
+    <a href="success.html" class="active">3. Success</a>
+    <a href="index.html">Home</a>
+  </nav>
+</header>
+
+<div class="page-content">
+
+  <h1>Step 3 — Success</h1>
+
+  <div class="callout success">
+    Narrow this window below <strong>640&thinsp;px</strong> to see each table reflow into its mobile layout.
+  </div>
+
+  <p>A single media query does all the work: it hides the header row, stacks cells, and reveals the per-cell labels — keeping context right next to every value.</p>
+
+  <pre><code>@media screen and (max-width: 640px) {
+  /* Hide the real header row */
+  table.responsive thead { display: none; }
+
+  /* Turn each row into a card */
+  table.responsive tbody tr {
+    display: block;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+
+  /* Stack cells vertically; zero out td padding so label sits flush */
+  table.responsive tbody td { display: block; padding: 0; }
+
+  /* Remove bottom border on the last cell — the card border covers it */
+  table.responsive tbody tr td:last-child { border-bottom: none; }
+
+  /* Stack the spans inside each cell */
+  table.responsive td span { display: block; }
+
+  /* Style the label like a column header; owns its own padding now */
+  table.responsive td .label {
+    display: block;
+    padding: 0.25rem 0.875rem;
+    background-color: #ddd;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  table.responsive td .data { padding: 0.6rem 0.875rem; }
+}</code></pre>
+
+  <p>The same core pattern supports different mobile visual styles by adjusting only the label/data CSS inside the media query:</p>
+
+  <!-- Style A ─────────────────────────────────────────── -->
+  <div class="table-section">
+    <h3>Style A — Stacked label</h3>
+    <p>The label renders as a full-width header bar above the value. Clean and immediately scannable.</p>
+    <table class="responsive style-a">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Department</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="label">Name</span><span class="data">Alice Chen</span></td>
+          <td><span class="label">Role</span><span class="data">Senior Engineer</span></td>
+          <td><span class="label">Department</span><span class="data">Product</span></td>
+          <td><span class="label">Location</span><span class="data">Remote</span></td>
+        </tr>
+        <tr>
+          <td><span class="label">Name</span><span class="data">Bob Davis</span></td>
+          <td><span class="label">Role</span><span class="data">UX Designer</span></td>
+          <td><span class="label">Department</span><span class="data">Design</span></td>
+          <td><span class="label">Location</span><span class="data">New York</span></td>
+        </tr>
+        <tr>
+          <td><span class="label">Name</span><span class="data">Carol Smith</span></td>
+          <td><span class="label">Role</span><span class="data">Product Manager</span></td>
+          <td><span class="label">Department</span><span class="data">Product</span></td>
+          <td><span class="label">Location</span><span class="data">San Francisco</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Style B ─────────────────────────────────────────── -->
+  <div class="table-section">
+    <h3>Style B — Inline label</h3>
+    <p>The label sits inline on the left; the value floats right. Works well for key-value data like specs or comparisons.</p>
+    <table class="responsive style-b">
+      <thead>
+        <tr>
+          <th></th>
+          <th>TARDIS</th>
+          <th>Enterprise</th>
+          <th>Falcon</th>
+          <th>Serenity</th>
+          <th>Black Pearl</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>1st Captain</th>
+          <td><span class="label">TARDIS</span><span class="data">The Doctor</span></td>
+          <td><span class="label">Enterprise</span><span class="data">April</span></td>
+          <td><span class="label">Falcon</span><span class="data">Calrissian</span></td>
+          <td><span class="label">Serenity</span><span class="data">Reynolds</span></td>
+          <td><span class="label">Black Pearl</span><span class="data">Sparrow</span></td>
+        </tr>
+        <tr>
+          <th>2nd Captain</th>
+          <td><span class="label">TARDIS</span><span class="data">—</span></td>
+          <td><span class="label">Enterprise</span><span class="data">Pike</span></td>
+          <td><span class="label">Falcon</span><span class="data">Solo</span></td>
+          <td><span class="label">Serenity</span><span class="data">—</span></td>
+          <td><span class="label">Black Pearl</span><span class="data">Barbossa</span></td>
+        </tr>
+        <tr>
+          <th>3rd Captain</th>
+          <td><span class="label">TARDIS</span><span class="data">—</span></td>
+          <td><span class="label">Enterprise</span><span class="data">Kirk</span></td>
+          <td><span class="label">Falcon</span><span class="data">Rey</span></td>
+          <td><span class="label">Serenity</span><span class="data">—</span></td>
+          <td><span class="label">Black Pearl</span><span class="data">Sparrow</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a href="index.html" class="btn btn-primary">← Back to Home</a>
+  &nbsp;
+  <a href="examples/complex.html" class="btn btn-outline" download>Download complex.html</a>
+
+</div>
+
+<footer class="site-footer">
+  MIT License &middot;
+  <a href="https://github.com/yesnoio/responsive-table">github.com/yesnoio/responsive-table</a>
+</footer>
+
+</body>
+</html>

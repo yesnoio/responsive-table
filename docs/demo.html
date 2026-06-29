@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      padding: 1.25rem;
+      color: #334155;
+      line-height: 1.5;
+    }
+
+    table.responsive { width: 100%; border-collapse: collapse; }
+    table.responsive th,
+    table.responsive td {
+      padding: 0.6rem 0.875rem;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 0.9rem;
+    }
+    table.responsive th {
+      background: #f1f5f9;
+      font-weight: 600;
+      color: #0f172a;
+    }
+    table.responsive tbody tr:last-child td { border-bottom: none; }
+    table.responsive td .label { display: none; }
+
+    @media screen and (max-width: 640px) {
+      table.responsive thead { display: none; }
+      table.responsive tbody tr {
+        display: block;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        overflow: hidden;
+        margin-bottom: 1rem;
+      }
+      table.responsive tbody tr:last-child { margin-bottom: 0; }
+      table.responsive tbody td { display: block; padding: 0; }
+      table.responsive tbody tr td:last-child { border-bottom: none; }
+      table.responsive td span { display: block; }
+      table.responsive td .label {
+        display: block;
+        padding: 0.25rem 0.875rem;
+        background: #f1f5f9;
+        font-weight: 600;
+        text-align: center;
+        color: #0f172a;
+      }
+      table.responsive td .data { padding: 0.6rem 0.875rem; }
+    }
+  </style>
+</head>
+<body>
+  <table class="responsive">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Department</th>
+        <th>Location</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="label">Name</span><span class="data">Alice Chen</span></td>
+        <td><span class="label">Role</span><span class="data">Senior Engineer</span></td>
+        <td><span class="label">Department</span><span class="data">Product</span></td>
+        <td><span class="label">Location</span><span class="data">Remote</span></td>
+        <td><span class="label">Status</span><span class="data">Active</span></td>
+      </tr>
+      <tr>
+        <td><span class="label">Name</span><span class="data">Bob Davis</span></td>
+        <td><span class="label">Role</span><span class="data">UX Designer</span></td>
+        <td><span class="label">Department</span><span class="data">Design</span></td>
+        <td><span class="label">Location</span><span class="data">New York</span></td>
+        <td><span class="label">Status</span><span class="data">Active</span></td>
+      </tr>
+      <tr>
+        <td><span class="label">Name</span><span class="data">Carol Smith</span></td>
+        <td><span class="label">Role</span><span class="data">Product Manager</span></td>
+        <td><span class="label">Department</span><span class="data">Product</span></td>
+        <td><span class="label">Location</span><span class="data">San Francisco</span></td>
+        <td><span class="label">Status</span><span class="data">Active</span></td>
+      </tr>
+      <tr>
+        <td><span class="label">Name</span><span class="data">Dan Lee</span></td>
+        <td><span class="label">Role</span><span class="data">Data Analyst</span></td>
+        <td><span class="label">Department</span><span class="data">Analytics</span></td>
+        <td><span class="label">Location</span><span class="data">Chicago</span></td>
+        <td><span class="label">Status</span><span class="data">On Leave</span></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

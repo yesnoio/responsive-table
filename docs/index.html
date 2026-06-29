@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Table – Pure HTML &amp; CSS</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── Hero ─────────────────────────────────────── */
+    .hero { padding: 3rem 0 1.5rem; }
+    .hero h1 { font-size: 2.25rem; line-height: 1.25; margin-bottom: 0.75rem; }
+    .hero p  { font-size: 1.1rem; max-width: 560px; }
+    .hero .tagline { color: #64748b; }
+
+    /* ── Demo panel ───────────────────────────────── */
+    .demo-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .demo-controls label { font-size: 0.875rem; color: #64748b; white-space: nowrap; }
+    .demo-controls input[type=range] {
+      flex: 1;
+      min-width: 120px;
+      max-width: 380px;
+      accent-color: #2563eb;
+    }
+    .width-badge {
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      padding: 0.15em 0.55em;
+      font-size: 0.8rem;
+      font-family: ui-monospace, monospace;
+      min-width: 4.5em;
+      text-align: center;
+      color: #475569;
+    }
+    .demo-viewport {
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: max-width 0.08s ease;
+      background: #fff;
+    }
+    .demo-viewport iframe {
+      width: 100%;
+      border: none;
+      display: block;
+      height: 200px;
+    }
+    .viewport-label {
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.75rem;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* ── Step cards ───────────────────────────────── */
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .step-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .step-card-head {
+      padding: 1rem;
+      background: #f8fafc;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .step-num.bad  { background: #ef4444; }
+    .step-num.mid  { background: #f59e0b; }
+    .step-num.good { background: #16a34a; }
+    .step-card-head h3 { font-size: 0.95rem; padding-top: 0.2rem; }
+    .step-card-body { padding: 1rem; }
+    .step-card-body p { font-size: 0.875rem; }
+
+    /* ── Download grid ────────────────────────────── */
+    .dl-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .dl-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+    .dl-card .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .dl-card h4 { font-size: 0.875rem; margin-bottom: 0.3rem; color: #0f172a; font-family: ui-monospace, monospace; }
+    .dl-card p  { font-size: 0.8rem; color: #64748b; margin-bottom: 0.75rem; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="index.html">Responsive Table</a>
+  <nav>
+    <a href="fail.html">Fail</a>
+    <a href="cell-labels-added.html">Add Labels</a>
+    <a href="success.html">Success</a>
+    <a href="https://github.com/yesnoio/responsive-table">GitHub</a>
+  </nav>
+</header>
+
+<div class="page-content">
+
+  <section class="hero">
+    <h1>Responsive Tables<br>with Pure HTML &amp; CSS</h1>
+    <p class="tagline">No JavaScript. No frameworks. A lightweight pattern that keeps column labels next to their data at any viewport width.</p>
+  </section>
+
+  <section id="demo">
+    <h2>Live Demo</h2>
+    <p>Drag the slider below 640&thinsp;px to see the mobile layout kick in.</p>
+    <div class="demo-controls">
+      <label for="widthSlider">Viewport width:</label>
+      <input type="range" id="widthSlider" min="280" max="860" value="860">
+      <span class="width-badge" id="widthLabel">860px</span>
+    </div>
+    <div class="demo-viewport" id="demoViewport">
+      <iframe src="demo.html" title="Responsive table demo" id="demoFrame"></iframe>
+      <div class="viewport-label">
+        <span id="layoutLabel">Desktop layout</span>
+        <span>breakpoint: 640px</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-it-works">
+    <h2>How It Works</h2>
+    <p>The trick is to embed column header text directly inside each cell, hidden by default, then reveal it via a media query when cells stack.</p>
+    <div class="step-grid">
+      <div class="step-card">
+        <div class="step-card-head">
+          <span class="step-num bad">✗</span>
+          <h3>Naive Approach Fails</h3>
+        </div>
+        <div class="step-card-body">
+          <p>Stacking <code>&lt;th&gt;</code> and <code>&lt;td&gt;</code> with <code>display:block</code> isolates all headers at the top, disconnected from their data.</p>
+          <a href="fail.html">See why it fails →</a>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-card-head">
+          <span class="step-num mid">2</span>
+          <h3>Add Labels to Each Cell</h3>
+        </div>
+        <div class="step-card-body">
+          <p>Add a <code>&lt;span class="label"&gt;</code> inside every <code>&lt;td&gt;</code> that repeats the column header. Hide it with CSS.</p>
+          <a href="cell-labels-added.html">See the markup →</a>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-card-head">
+          <span class="step-num good">✓</span>
+          <h3>CSS Does the Rest</h3>
+        </div>
+        <div class="step-card-body">
+          <p>A media query reveals the labels, stacks cells, and hides the header row — each label stays right next to its data.</p>
+          <a href="success.html">See the result →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="the-pattern">
+    <h2>The Pattern</h2>
+    <h3>HTML</h3>
+    <pre><code>&lt;table class="responsive"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;Role&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;!-- Each td wraps a .label (column header copy) and .data --&gt;
+      &lt;td&gt;&lt;span class="label"&gt;Name&lt;/span&gt;&lt;span class="data"&gt;Alice&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class="label"&gt;Role&lt;/span&gt;&lt;span class="data"&gt;Engineer&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+
+    <h3>CSS</h3>
+    <pre><code>/* Labels are always in the DOM, hidden at wide widths */
+table.responsive td .label {
+  display: none;
+}
+
+@media screen and (max-width: 640px) {
+  /* Hide the real header row */
+  table.responsive thead {
+    display: none;
+  }
+
+  /* Turn each row into a card */
+  table.responsive tbody tr {
+    display: block;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+
+  /* Stack cells vertically; zero out td padding so label sits flush */
+  table.responsive tbody td {
+    display: block;
+    padding: 0;
+  }
+
+  /* Remove bottom border on the last cell — the card border covers it */
+  table.responsive tbody tr td:last-child {
+    border-bottom: none;
+  }
+
+  /* Stack the spans inside each cell */
+  table.responsive td span {
+    display: block;
+  }
+
+  /* Style the label like a column header; owns its own padding now */
+  table.responsive td .label {
+    display: block;
+    padding: 0.25rem 0.875rem;
+    background-color: #ddd;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  table.responsive td .data {
+    padding: 0.6rem 0.875rem;
+  }
+}</code></pre>
+  </section>
+
+  <section id="download">
+    <h2>Download</h2>
+    <h3 style="margin-bottom:0.5rem;">Optional tools</h3>
+    <p>Both tools read your <code>&lt;thead&gt;</code> and inject the <code>.label</code>/<code>.data</code> spans automatically — pick whichever fits your workflow.</p>
+
+    <div class="dl-grid" style="margin-bottom:1.5rem;">
+      <div class="dl-card">
+        <div class="icon">⚡</div>
+        <h4>responsive-table.js</h4>
+        <p>Client-side. Include once and every <code>table.responsive</code> on the page is transformed at load time.</p>
+        <pre style="margin:0.5rem 0;font-size:0.75rem;text-align:left;">&lt;script src="responsive-table.js"&gt;&lt;/script&gt;</pre>
+        <a href="responsive-table.js" download class="btn btn-outline btn-sm">Download</a>
+      </div>
+      <div class="dl-card">
+        <div class="icon">🐍</div>
+        <h4>transform-tables.py</h4>
+        <p>Build-time. Rewrites the HTML file directly — targets every <code>&lt;table&gt;</code>, adds <code>class="responsive"</code> where absent, and injects the label markup. No JS needed at runtime.</p>
+        <pre style="margin:0.5rem 0;font-size:0.75rem;text-align:left;">python3 transform-tables.py page.html</pre>
+        <a href="transform-tables.py" download class="btn btn-outline btn-sm">Download</a>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:0.5rem;">HTML examples</h3>
+    <p>Self-contained HTML files ranging from a blank starter to a complex multi-table layout.</p>
+    <div class="dl-grid">
+      <div class="dl-card">
+        <div class="icon">📄</div>
+        <h4>blank.html</h4>
+        <p>Minimal structure with comments — fill in your own data</p>
+        <a href="examples/blank.html" download class="btn btn-outline btn-sm">Download</a>
+      </div>
+      <div class="dl-card">
+        <div class="icon">📄</div>
+        <h4>basic.html</h4>
+        <p>Working 5-column table with sample data</p>
+        <a href="examples/basic.html" download class="btn btn-outline btn-sm">Download</a>
+      </div>
+      <div class="dl-card">
+        <div class="icon">📄</div>
+        <h4>styled.html</h4>
+        <p>Striped rows, hover, and an inline-label mobile style</p>
+        <a href="examples/styled.html" download class="btn btn-outline btn-sm">Download</a>
+      </div>
+      <div class="dl-card">
+        <div class="icon">📄</div>
+        <h4>complex.html</h4>
+        <p>Two tables, two mobile layouts, richer data</p>
+        <a href="examples/complex.html" download class="btn btn-outline btn-sm">Download</a>
+      </div>
+    </div>
+    <p style="margin-bottom:0.75rem;">Want them all at once?</p>
+    <a href="downloads/responsive-table-examples.zip" class="btn btn-primary btn-lg">Download ZIP</a>
+  </section>
+
+</div>
+
+<footer class="site-footer">
+  MIT License &middot;
+  <a href="https://github.com/yesnoio/responsive-table">github.com/yesnoio/responsive-table</a>
+</footer>
+
+<script>
+  (function () {
+    const slider   = document.getElementById('widthSlider');
+    const viewport = document.getElementById('demoViewport');
+    const frame    = document.getElementById('demoFrame');
+    const label    = document.getElementById('widthLabel');
+    const layout   = document.getElementById('layoutLabel');
+
+    function update() {
+      const w = parseInt(slider.value, 10);
+      viewport.style.maxWidth = w + 'px';
+      label.textContent = w + 'px';
+      layout.textContent = w <= 640 ? 'Mobile layout' : 'Desktop layout';
+      layout.style.color = w <= 640 ? '#16a34a' : '#94a3b8';
+    }
+
+    // Auto-size iframe height after load
+    frame.addEventListener('load', function () {
+      try {
+        const h = frame.contentDocument.body.scrollHeight;
+        frame.style.height = Math.max(h + 8, 120) + 'px';
+      } catch (_) {}
+    });
+
+    // Clamp slider max to actual container width on load
+    const maxW = document.querySelector('.page-content').offsetWidth;
+    slider.max = Math.min(860, maxW);
+    slider.value = slider.max;
+
+    slider.addEventListener('input', update);
+    update();
+  })();
+</script>
+
+</body>
+</html>
